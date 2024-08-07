@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fabric_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.sabanbingul.fabriccatalog.view.FeedFragment"
+        android:label="fragment_feed"
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_fabricFragment"
+            app:destination="@id/fabricFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fabricFragment"
+        android:name="com.sabanbingul.fabriccatalog.view.FabricFragment"
+        android:label="fragment_fabric"
+        tools:layout="@layout/fragment_fabric" >
+        <action
+            android:id="@+id/action_fabricFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.sabanbingul.fabriccatalog.view.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+</navigation>

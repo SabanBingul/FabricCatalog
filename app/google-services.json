@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "582324630599",
+    "firebase_url": "https://fabriccatalog-bf292-default-rtdb.firebaseio.com",
+    "project_id": "fabriccatalog-bf292",
+    "storage_bucket": "fabriccatalog-bf292.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582324630599:android:d82caae13a7dce1d94ad62",
+        "android_client_info": {
+          "package_name": "com.sabanbingul.fabriccatalog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBwffvaTBP-9kUeGEUA28RZxlo9p4OXDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

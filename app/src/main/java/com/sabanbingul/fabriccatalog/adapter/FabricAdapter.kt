@@ -1,4 +1,4 @@
-package com.sabanbingul.fabriccatalog.adapter;
+package com.sabanbingul.fabriccatalog.adapter
 
-public class FabricAdapter {
+class FabricAdapter {
 }

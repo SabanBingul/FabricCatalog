@@ -22,6 +22,11 @@
         <action
             android:id="@+id/action_fabricFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <argument
+            android:name="fabricUuid"
+            app:argType="integer"
+            android:defaultValue="0" />
+
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

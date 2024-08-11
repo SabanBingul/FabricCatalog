@@ -11,7 +11,7 @@
         android:id="@+id/fabricPic"
         android:layout_width="191dp"
         android:layout_height="198dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
@@ -25,7 +25,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:text="Fabric Weight"
-        android:textSize="14sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/fabricPic"
         app:layout_constraintTop_toBottomOf="@+id/fabricMaterial" />
 
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="72dp"
         android:text="Fabric Info"
-        android:textSize="18sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/fabricPic"
         app:layout_constraintTop_toBottomOf="@+id/fabricPic" />
 
@@ -47,7 +47,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:text="Fabric Material"
-        android:textSize="14sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/fabricPic"
         app:layout_constraintTop_toBottomOf="@+id/fabricWidth" />
 
@@ -58,7 +58,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:text="Fabric Width"
-        android:textSize="14sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/fabricPic"
         app:layout_constraintTop_toTopOf="@+id/fabricPic" />
 
@@ -68,8 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:text="Fabric Name"
-        android:textSize="22sp"
+        android:textSize="45sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

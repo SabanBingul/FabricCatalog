@@ -1,13 +1,11 @@
 package com.sabanbingul.fabriccatalog.model
 
-import androidx.annotation.StringRes
-
 data class Fabric(
-    val fabricName : String?,
-    val fabricWidth : String?,
-    val fabricMaterial : String?,
-    val fabricWeight : String?,
-    val fabricInfo : String?,
-    val fabricPic : String?
-
+    val uuid: Int = 0,
+    val name: String? = null,
+    val weight: String? = null,
+    val material: String? = null,
+    val width: String? = null,
+    val info: String? = null,
+    val pic: String? = null // Resim URL'sini ekleyin
 )

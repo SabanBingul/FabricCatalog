@@ -1,19 +1,32 @@
 package com.sabanbingul.fabriccatalog.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.sabanbingul.fabriccatalog.model.Fabric
 
-class FabricViewModel : ViewModel() {
+class FabricViewModel(application: Application) : AndroidViewModel(application) {
 
-    val fabricLiveData = MutableLiveData<Fabric>()
+    private val firebaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("fabrics")
+    private val _fabricLiveData = MutableLiveData<Fabric>()
+    val fabricLiveData: LiveData<Fabric> get() = _fabricLiveData
 
-    fun getData(){
-        val fabric = Fabric("30/1 Full Lyc Supreme", "180cm", "100% Cotton", "180gr", "asdasd", "www.ss.com")
+    fun getData(fabricUuid: Int) {
+        firebaseRef.child(fabricUuid.toString()).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val fabric = snapshot.getValue(Fabric::class.java)
+                _fabricLiveData.value = fabric!!
+            }
 
-        fabricLiveData.value = fabric
-
-
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors.
+            }
+        })
     }
-
 }

@@ -1,20 +1,42 @@
 package com.sabanbingul.fabriccatalog.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.sabanbingul.fabriccatalog.model.Fabric
 
-class FeedViewModel : ViewModel() {
-    val fabrics = MutableLiveData<List<Fabric>>()
+class FeedViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun loadData(){
+    private val firebaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("fabrics")
+    private val _fabricList = MutableLiveData<List<Fabric>>()
+    val fabricList: LiveData<List<Fabric>> get() = _fabricList
 
-        val fabric1 = Fabric("30/1 Full Lyc Supreme", "180cm", "100% Cotton", "180gr", "asdasd", "www.ss.com")
-        val fabric2 = Fabric("30/1 Full Lyc Supreme", "180cm", "100% Cotton", "180gr", "asdasd", "www.ss.com")
-        val fabric3 = Fabric("30/1 Full Lyc Supreme", "180cm", "100% Cotton", "180gr", "asdasd", "www.ss.com")
-        val fabric4 = Fabric("30/1 Full Lyc Supreme", "180cm", "100% Cotton", "180gr", "asdasd", "www.ss.com")
+    init {
+        fetchFabrics()
+    }
 
-        val fabricList = arrayListOf<Fabric>(fabric1, fabric2, fabric3, fabric4)
-        fabrics.value = fabricList
+    private fun fetchFabrics() {
+        firebaseRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val fabrics = mutableListOf<Fabric>()
+                if (snapshot.exists()) {
+                    for (fabricSnap in snapshot.children) {
+                        val fabric = fabricSnap.getValue(Fabric::class.java)
+                        fabric?.let { fabrics.add(it) }
+                    }
+                }
+                _fabricList.value = fabrics
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors.
+            }
+        })
     }
 }
